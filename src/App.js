@@ -16,14 +16,16 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Switch>
-          <Route path='/restaurants'>
-            <Restaurants />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route>
-        </Switch>
+        <div className='content'>
+          <Switch>
+            <Route path='/restaurants'>
+              <Restaurants />
+            </Route>
+            <Route path='/'>
+              <Home />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </div>
   );
