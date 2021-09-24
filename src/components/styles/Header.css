@@ -1,0 +1,36 @@
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #333333;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.menu-item {
+  margin: 15px;
+}
+
+.menu-item a {
+  color: white;
+  text-decoration: none;
+  font-size: large;
+}
+
+.menu-item a:hover {
+  color: gray;
+}
