@@ -7,6 +7,9 @@ class Header extends React.Component {
   render() {
     return (
       <div className='menu-container'>
+        <div className='logo-container'>
+          <img src='/images/logo512.png' className='logo' />
+        </div>
         <nav className='menu'>
           <ul className='menu-list'>
             <li className='menu-item'>
