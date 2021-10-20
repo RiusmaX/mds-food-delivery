@@ -10,8 +10,10 @@ class Restaurant extends React.Component {
     }
     return (
       <div className='card'>
-        <img src={`https://strapi.myidea.fr${restaurant.Photos[0].url}`} className='main-img' />
-        <h2>{restaurant.title}</h2>
+        { restaurant.Photos &&
+          <img src={`https://strapi.myidea.fr${restaurant.Photos[0].url}`} className='main-img' />  
+        }
+        <h2>{restaurant.name}</h2>
         <p>{restaurant.description}</p>
       </div>
     )

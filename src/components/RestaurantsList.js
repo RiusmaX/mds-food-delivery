@@ -14,7 +14,7 @@ class RestaurantsList extends React.Component {
       <div className='list-container'>
         {this.props.restaurants.map((restaurant) => {
           return (
-            <Restaurant restaurant={restaurant} />
+            <Restaurant key={restaurant._id} restaurant={restaurant} />
           )
         })}
       </div>

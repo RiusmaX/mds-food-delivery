@@ -1,0 +1,20 @@
+button, input[type='submit'] {
+  background-color: #333333;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover, input[type='submit']:hover {
+  background-color: #fff;
+  color: #333333;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
