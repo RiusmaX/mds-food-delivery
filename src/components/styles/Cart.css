@@ -1,0 +1,6 @@
+.cart-container {
+  position: absolute;
+  min-height: 400px;
+  min-width: 300px;
+  background-color: aquamarine;
+}

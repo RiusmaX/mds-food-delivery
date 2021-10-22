@@ -65,6 +65,15 @@ const getRestaurants = async () => {
   }
 }
 
+const getDishesByRestaurantId = async (restaurantId) => {
+  try {
+    const response = await api.get(`/dishes?id=${restaurantId}`)
+    return response.data
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 const getProfile = async () => {
   try {
     const token = window.localStorage.getItem('token')
@@ -85,5 +94,6 @@ export {
   login,
   register,
   getProfile,
-  getRestaurants
+  getRestaurants,
+  getDishesByRestaurantId
 }
