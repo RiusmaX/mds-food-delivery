@@ -1,14 +1,15 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useEffect, useReducer } from 'react'
 import { login } from '../services/api'
 
 const AuthContext = createContext()
 
 const actionTypes = {
   LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
   ERROR: 'ERROR'
 }
 
-const initialState = {
+const initialState = JSON.parse(window.localStorage.getItem('AUTH')) || {
   token: null,
   user: null,
   error: null,
@@ -25,6 +26,9 @@ const AuthReducer = (state, action) => {
       return {
         ...initialState, error: action.data.error
       }
+    case actionTypes.LOGOUT:
+      window.localStorage.removeItem('AUTH')
+      return initialState
     default:
       throw new Error(`Unhandled action type : ${action.type}`)
   }
@@ -32,6 +36,11 @@ const AuthReducer = (state, action) => {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState)
+
+  useEffect(() => {
+    window.localStorage.setItem('AUTH', JSON.stringify(state))
+  }, [state])
+
   return <AuthContext.Provider value={{ state, dispatch }}>{children}</AuthContext.Provider>
 }
 
@@ -42,16 +51,16 @@ const useAuth = () => {
 }
 
 const loginUser = async (credentials, dispatch) => {
-  const response = await login(credentials)
-  if (response.error) {
-    dispatch({
-      type: actionTypes.ERROR,
-      data: { error: response.error }
-    })
-  } else {
+  try {
+    const data = await login(credentials)
     dispatch({
       type: actionTypes.LOGIN,
-      data: { user: response.data.user, token: response.data.token }
+      data: { user: data.user, token: data.token }
+    })
+  } catch (error) {
+    dispatch({
+      type: actionTypes.ERROR,
+      data: { error: error.message }
     })
   }
 }

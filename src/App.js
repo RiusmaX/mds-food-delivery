@@ -16,6 +16,7 @@ import './components/styles/Global.css'
 import Cart from './components/Cart'
 import { CartProvider } from './contexts/CartContext'
 import { AuthProvider } from './contexts/AuthContext'
+import Order from './pages/Order'
 
 function App () {
   return (
@@ -27,6 +28,9 @@ function App () {
             <Cart />
             <div className='content'>
               <Switch>
+                <Route path='/order'>
+                  <Order />
+                </Route>
                 <Route path='/restaurant/:id'>
                   <Restaurant />
                 </Route>

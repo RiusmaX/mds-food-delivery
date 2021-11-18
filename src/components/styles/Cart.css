@@ -4,3 +4,11 @@
   min-width: 300px;
   background-color: aquamarine;
 }
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}

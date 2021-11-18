@@ -5,7 +5,7 @@ import UserInfos from '../components/UserInfos'
 
 import { getProfile, register } from '../services/api'
 
-import { loginUser, useAuth } from '../contexts/AuthContext'
+import { actionTypes, loginUser, useAuth } from '../contexts/AuthContext'
 
 // Composant sous forme de fonction
 // Nouvelle méthode
@@ -15,17 +15,14 @@ function Auth () {
   const [isRegister, setIsRegister] = useState(false)
   const [profil, setProfil] = useState(null)
 
-  const { dispatch, state: { error, loading } } = useAuth()
-
-  console.log(error)
-
-  // Appelé à chaque montage dans le DOM
+  const { dispatch, state: { error, user, loading } } = useAuth()
   useEffect(() => {
-    const token = window.localStorage.getItem('token')
-    if (token) {
+    if (user) {
       setIsLoggedIn(true)
+    } else {
+      setIsLoggedIn(false)
     }
-  }, [])
+  }, [user])
 
   // Soumission du formulaire
   const handleSubmit = async (infos) => {
@@ -37,10 +34,6 @@ function Auth () {
       // Appel de la fonction d'API login
       await loginUser(infos, dispatch)
     }
-    const token = window.localStorage.getItem('token')
-    if (token) {
-      setIsLoggedIn(true)
-    }
   }
 
   const handleLoadProfile = async () => {
@@ -49,8 +42,9 @@ function Auth () {
   }
 
   const logout = () => {
-    setIsLoggedIn(false)
-    window.localStorage.removeItem('token')
+    dispatch({
+      type: actionTypes.LOGOUT
+    })
   }
 
   return (

@@ -9,6 +9,8 @@ function LoginForm ({ submit, error }) {
     password: '12345678'
   })
 
+  console.log(error)
+
   const handleChange = (e) => {
     setFormData({
       // Conservation des autres champs

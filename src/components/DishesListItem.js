@@ -14,6 +14,7 @@ function DishesListItem ({ dish }) {
     <div className='card'>
       <h2>{dish.name}</h2>
       <p>{dish.description}</p>
+      <p>{dish.price.toFixed(2)}€</p>
       <button onClick={addToCart}>Ajouter au panier</button>
     </div>
   )
