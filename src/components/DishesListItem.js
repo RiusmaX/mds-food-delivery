@@ -1,11 +1,11 @@
-import { useCart, actions } from '../contexts/CartContext'
+import { useCart, actionTypes } from '../contexts/CartContext'
 
 function DishesListItem ({ dish }) {
   const { dispatch } = useCart()
 
   const addToCart = () => {
     dispatch({
-      type: actions.ADD_ITEM_TO_CART,
+      type: actionTypes.ADD_ITEM_TO_CART,
       data: dish
     })
   }

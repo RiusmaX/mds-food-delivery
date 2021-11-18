@@ -29,9 +29,8 @@ const login = async (credentials) => {
       data: response.data
     }
   } catch (error) {
-    console.error(error)
     return {
-      error: error,
+      error: error.response.data,
       data: null
     }
   }
@@ -48,7 +47,6 @@ const register = async (registerInfos) => {
       data: response.data
     }
   } catch (error) {
-    console.log(error)
     return {
       error: error,
       data: null

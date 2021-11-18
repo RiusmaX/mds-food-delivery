@@ -3,16 +3,21 @@ import LoginForm from '../components/LoginForm'
 import RegisterForm from '../components/RegisterForm'
 import UserInfos from '../components/UserInfos'
 
-import { getProfile, login, register } from '../services/api'
+import { getProfile, register } from '../services/api'
+
+import { loginUser, useAuth } from '../contexts/AuthContext'
 
 // Composant sous forme de fonction
 // Nouvelle méthode
 function Auth () {
   // Initialisation des états locaux
-  const [error, setError] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
   const [profil, setProfil] = useState(null)
+
+  const { dispatch, state: { error, loading } } = useAuth()
+
+  console.log(error)
 
   // Appelé à chaque montage dans le DOM
   useEffect(() => {
@@ -30,13 +35,7 @@ function Auth () {
       data = await register(infos)
     } else {
       // Appel de la fonction d'API login
-      data = await login(infos)
-    }
-    // Gestion des erreurs
-    if (data.error) {
-      setError(data.error)
-    } else {
-      setError(null)
+      await loginUser(infos, dispatch)
     }
     const token = window.localStorage.getItem('token')
     if (token) {

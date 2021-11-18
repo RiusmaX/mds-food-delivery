@@ -43,13 +43,13 @@ function LoginForm ({ submit, error }) {
         />
         <input type='submit' value='Se connecter' />
         {
-              error &&
-              (
-                <div>
-                  <h4>Identifiants invalides</h4>
-                </div>
-              )
-            }
+          error &&
+          (
+            <div>
+              <h4>{error}</h4>
+            </div>
+          )
+        }
       </form>
     </div>
   )

@@ -1,6 +1,6 @@
 /**
  * 1) Ecrire le contexte
- * - actions : ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART
+ * - actionTypes : ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART
  * - Etat Initial : cart = array contenant les items
  * 2) Brancher le contexte sur les plats et sur le composant Cart
  */
@@ -9,8 +9,8 @@ import React from 'react'
 // Création du contexte
 const CartContext = React.createContext()
 
-// Création des actions
-const actions = {
+// Création des actionTypes
+const actionTypes = {
   ADD_ITEM_TO_CART: 'ADD_ITEM_TO_CART',
   REMOVE_ITEM_FROM_CART: 'REMOVE_ITEM_FROM_CART'
 }
@@ -27,7 +27,7 @@ const initialState = {
 
 const CartReducer = (state, action) => {
   switch (action.type) {
-    case actions.ADD_ITEM_TO_CART:
+    case actionTypes.ADD_ITEM_TO_CART:
       // Si mon élément est déjà présent dans mon panier, j'incrémente la quantité
       if (state.cart.some(item => item.dish._id === action.data._id)) {
         return {
@@ -51,7 +51,7 @@ const CartReducer = (state, action) => {
         return { ...state, cart: state.cart.concat([{ dish: action.data, quantity: 1 }]) }
       }
 
-    case actions.REMOVE_ITEM_FROM_CART:
+    case actionTypes.REMOVE_ITEM_FROM_CART:
       return {
         ...state,
         cart: state.cart.map(item => {
@@ -88,5 +88,5 @@ const useCart = () => {
 export {
   CartProvider,
   useCart,
-  actions
+  actionTypes
 }
