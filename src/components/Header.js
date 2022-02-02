@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './styles/Header.css'
 
 class Header extends React.Component {
-  render() {
+  render () {
     return (
       <div className='menu-container'>
         <div className='logo-container'>
@@ -21,6 +21,9 @@ class Header extends React.Component {
             <li className='menu-item'>
               <Link to='/auth'>Auth</Link>
             </li>
+            <li className='menu-item'>
+              <Link to='/upload'>Upload</Link>
+            </li>
           </ul>
         </nav>
       </div>
@@ -28,4 +31,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default Header

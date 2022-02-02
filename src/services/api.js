@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://serene-hamlet-52930.herokuapp.com/',
+  baseURL: 'http://localhost:4000/',
   headers: {
     'Content-Type': 'application/json'
   },

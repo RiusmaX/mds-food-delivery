@@ -19,6 +19,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import Order from './pages/Order'
 import Success from './pages/Success'
 import Cancel from './pages/Cancel'
+import Upload from './pages/Upload'
 
 function App () {
   return (
@@ -30,6 +31,9 @@ function App () {
             <Cart />
             <div className='content'>
               <Switch>
+                <Route path='/upload'>
+                  <Upload />
+                </Route>
                 <Route path='/cancel'>
                   <Cancel />
                 </Route>
